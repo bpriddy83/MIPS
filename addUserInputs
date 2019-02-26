@@ -1,0 +1,41 @@
+.data
+	prompt1: .asciiz "Enter the first number. "
+	prompt2: .asciiz "\nEnter the second number. "
+	result: .asciiz "\nThe resulting sum is: "
+.text
+	# Prompt the user to enter the first number
+	li $v0, 4
+	la $a0, prompt1
+	syscall
+	
+	# Get the first number from the user
+	li $v0, 5
+	syscall
+	
+	# Store the result in $t0
+	move $t0, $v0
+	
+	# Prompt the user to enter the second number
+	li $v0, 4
+	la $a0, prompt2
+	syscall
+	
+	# Get the first number from the user
+	li $v0, 5
+	syscall
+	
+	# Store the result in $t1
+	move $t1, $v0
+	
+	# Add the two integers togeter
+	add $t3, $t0, $t1
+	
+	# Print the result of the two numbers
+	li $v0, 4
+	la $a0, result
+	syscall
+	
+	# Print the resulting sum
+	li $v0, 1
+	move $a0, $t3
+	syscall
